@@ -15,5 +15,3 @@ Portfolio pribadi, dibangun buat nunjukin project nyata, bukan sekadar CV digita
 - Next.js 16 (App Router) + TypeScript
 - Tailwind CSS v4
 - lucide-react buat icon
-
-## Cara Run
