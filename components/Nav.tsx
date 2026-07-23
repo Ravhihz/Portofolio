@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 
 const tabs = [
-  { id: "hero", label: "Hero.tsx" },
-  { id: "about", label: "About.tsx" },
-  { id: "projects", label: "Projects.tsx" },
-  { id: "skills", label: "Skills.tsx" },
-  { id: "contact", label: "Contact.tsx" },
+  { id: "hero",     label: "~" },
+  { id: "about",    label: "about" },
+  { id: "projects", label: "projects" },
+  { id: "skills",   label: "skills" },
+  { id: "contact",  label: "contact" },
 ];
 
 export default function Nav() {
@@ -17,12 +17,10 @@ export default function Nav() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
+          if (entry.isIntersecting) setActive(entry.target.id);
         });
       },
-      { rootMargin: "-40% 0px -50% 0px" } // trigger pas section ada di tengah viewport
+      { rootMargin: "-40% 0px -50% 0px" }
     );
 
     tabs.forEach(({ id }) => {
@@ -34,16 +32,16 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 bg-[var(--bg)]/90 backdrop-blur border-b border-[var(--border)]">
-      <div className="max-w-4xl mx-auto px-6 flex items-center gap-1 overflow-x-auto">
+    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+      <div className="flex items-center gap-1 bg-[var(--surface)]/90 backdrop-blur border border-[var(--border)] rounded-full px-2 py-1.5 shadow-xl shadow-black/40">
         {tabs.map((tab) => (
-          
-            <a key={tab.id}
+          <a
+            key={tab.id}
             href={`#${tab.id}`}
-            className={`font-mono text-sm px-4 py-3 border-b-2 whitespace-nowrap transition-colors ${
+            className={`font-mono text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition-all ${
               active === tab.id
-                ? "border-[var(--accent)] text-[var(--text)]"
-                : "border-transparent text-[var(--text-muted)] hover:text-[var(--text)]"
+                ? "bg-[var(--accent)] text-[var(--bg)] font-medium"
+                : "text-[var(--text-muted)] hover:text-[var(--text)]"
             }`}
           >
             {tab.label}

@@ -33,3 +33,16 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+@keyframes slide-up {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.22s ease-out;
+}
+
+main {
+  padding-bottom: 5rem;
+}
