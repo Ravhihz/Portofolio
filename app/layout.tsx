@@ -15,8 +15,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ravhi — Web Developer",
-  description: "Portfolio Ravhi Hz, fresh graduate Teknik Informatika",
+  title: "Ravhi | Web Developer",
+  description: "Portfolio Ravhi Haris Wibowo, fresh graduate Teknik Informatika",
 };
 
 export default function RootLayout({

@@ -4,20 +4,37 @@ import { useEffect, useState } from "react";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 
-const LINES = [
-  { prompt: "$ whoami", output: "ravhi hz" },
-  { prompt: "$ cat role.txt", output: "frontend-heavy fullstack developer" },
+const ROLES = [
+  "frontend-heavy fullstack developer",
+  "clean, typed API builder",
+  "scalable web solution shipper",
+  "ships real products, not just demos",
+];
+
+const STATIC_LINES = [
+  { prompt: "$ whoami", output: "ravhi" },
   { prompt: "$ cat shipping.txt", output: "captionin.varstory.my.id — live in production" },
 ];
 
+// dipindah ke luar component — dibikin sekali, bukan tiap render, jadi useEffect di bawah gak butuh ini di dependency array
+const INTRO_LINES = [
+  STATIC_LINES[0],
+  { prompt: "$ cat role.txt", output: ROLES[0] },
+  STATIC_LINES[1],
+];
+
 export default function Hero() {
+  const [introDone, setIntroDone] = useState(false);
   const [visibleLines, setVisibleLines] = useState(0);
   const [typedOutput, setTypedOutput] = useState("");
 
   useEffect(() => {
-    if (visibleLines >= LINES.length) return;
+    if (visibleLines >= INTRO_LINES.length) {
+      setIntroDone(true);
+      return;
+    }
 
-    const current = LINES[visibleLines].output;
+    const current = INTRO_LINES[visibleLines].output;
     let i = 0;
 
     const typing = setInterval(() => {
@@ -35,10 +52,55 @@ export default function Hero() {
     return () => clearInterval(typing);
   }, [visibleLines]);
 
+  // Fase 2: setelah intro selesai, line role.txt loop terus — ketik, tahan, hapus, ganti kata
+  const [roleText, setRoleText] = useState(ROLES[0]);
+
+  useEffect(() => {
+    if (!introDone) return;
+
+    let index = 0;
+    let charIndex = ROLES[0].length;
+    let phase: "hold" | "deleting" | "typing" = "hold";
+    let timeout: ReturnType<typeof setTimeout>;
+
+    function tick() {
+      const word = ROLES[index];
+
+      if (phase === "hold") {
+        timeout = setTimeout(() => {
+          phase = "deleting";
+          tick();
+        }, 2000);
+        return;
+      }
+
+      if (phase === "deleting") {
+        charIndex--;
+        setRoleText(word.slice(0, charIndex));
+        if (charIndex <= 0) {
+          index = (index + 1) % ROLES.length;
+          phase = "typing";
+        }
+        timeout = setTimeout(tick, 25);
+        return;
+      }
+
+      // phase === "typing"
+      const nextWord = ROLES[index];
+      charIndex++;
+      setRoleText(nextWord.slice(0, charIndex));
+      if (charIndex >= nextWord.length) phase = "hold";
+      timeout = setTimeout(tick, 35);
+    }
+
+    tick();
+    return () => clearTimeout(timeout);
+  }, [introDone]);
+
   return (
     <section id="hero" className="max-w-4xl mx-auto px-6 pt-16 pb-16">
       <h1 className="font-mono text-3xl sm:text-4xl font-bold text-[var(--text)] mb-2">
-        Ravhi Hz
+        Ravhi Haris Wibowo
       </h1>
       <p className="text-[var(--text)] text-lg sm:text-xl font-semibold mb-3 leading-snug">
         Frontend-Heavy Fullstack Developer <span className="text-[var(--text-muted)] font-normal">— Fresh Graduate S.Kom Teknik Informatika</span>
@@ -56,21 +118,43 @@ export default function Hero() {
         </div>
 
         <div className="p-6 font-mono text-sm space-y-2 min-h-[200px]">
-          {LINES.slice(0, visibleLines).map((line, idx) => (
-            <div key={idx}>
-              <p className="text-[var(--accent)]">{line.prompt}</p>
-              <p className="text-[var(--text)]">{line.output}</p>
-            </div>
-          ))}
+          {!introDone ? (
+            <>
+              {INTRO_LINES.slice(0, visibleLines).map((line, idx) => (
+                <div key={idx}>
+                  <p className="text-[var(--accent)]">{line.prompt}</p>
+                  <p className="text-[var(--text)]">{line.output}</p>
+                </div>
+              ))}
 
-          {visibleLines < LINES.length && (
-            <div>
-              <p className="text-[var(--accent)]">{LINES[visibleLines].prompt}</p>
-              <p className="text-[var(--text)]">
-                {typedOutput}
-                <span className="animate-pulse">▊</span>
-              </p>
-            </div>
+              {visibleLines < INTRO_LINES.length && (
+                <div>
+                  <p className="text-[var(--accent)]">{INTRO_LINES[visibleLines].prompt}</p>
+                  <p className="text-[var(--text)]">
+                    {typedOutput}
+                    <span className="animate-pulse">▊</span>
+                  </p>
+                </div>
+              )}
+            </>
+          ) : (
+            <>
+              <div>
+                <p className="text-[var(--accent)]">{STATIC_LINES[0].prompt}</p>
+                <p className="text-[var(--text)]">{STATIC_LINES[0].output}</p>
+              </div>
+              <div>
+                <p className="text-[var(--accent)]">$ cat role.txt</p>
+                <p className="text-[var(--text)]">
+                  {roleText}
+                  <span className="animate-pulse">▊</span>
+                </p>
+              </div>
+              <div>
+                <p className="text-[var(--accent)]">{STATIC_LINES[1].prompt}</p>
+                <p className="text-[var(--text)]">{STATIC_LINES[1].output}</p>
+              </div>
+            </>
           )}
         </div>
       </div>

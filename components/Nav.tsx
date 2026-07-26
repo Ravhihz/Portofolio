@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 
 const tabs = [
   { id: "hero",     label: "~" },
-  { id: "about",    label: "about" },
-  { id: "projects", label: "projects" },
-  { id: "skills",   label: "skills" },
-  { id: "contact",  label: "contact" },
+  { id: "about",    label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "contact",  label: "Contact" },
 ];
 
 export default function Nav() {

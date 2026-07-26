@@ -1,49 +1,35 @@
-import { Mail, Phone } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./icons";
+import { Send, Download } from "lucide-react";
+import SpotlightButton from "./SpotlightButton";
 
 export default function Contact() {
   return (
     <section id="contact" className="max-w-4xl mx-auto px-6 py-16 border-t border-[var(--border)]">
-      <h2 className="font-mono text-2xl font-bold mb-4 text-[var(--text)]">Contact</h2>
+      <div className="flex items-center gap-4 mb-10">
+        <span className="font-mono text-sm text-[var(--accent)]">03</span>
+        <span className="text-[var(--border)]">/</span>
+        <h2 className="font-mono text-2xl sm:text-3xl font-bold text-[var(--text)]">Contact</h2>
+        <div className="flex-1 h-px bg-[var(--border)]" />
+      </div>
+
       <p className="text-[var(--text-muted)] mb-2">
         Terbuka untuk peluang kerja sebagai frontend / fullstack developer.
       </p>
       <p className="text-[var(--text)] font-medium mb-8">
-        Punya role yang cocok? Hubungi saya — biasanya respons dalam 24 jam.
+        Punya project yang cocok? Hubungi saya via email atau GitHub.
       </p>
 
-      <div className="flex flex-col gap-3 max-w-sm">
-        <a href="mailto:ravhi.satria@gmail.com"
-          className="flex items-center gap-3 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
-        >
-          <Mail size={18} />
-          ravhi.satria@gmail.com
-        </a>
-        <a href="https://wa.me/6282210520690"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
-        >
-          <Phone size={18} />
-          WhatsApp
-        </a>
-        <a href="https://github.com/ravhihz"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
-        >
-          <GithubIcon size={18} />
-          github.com/ravhihz
-        </a>
-        <a href="https://linkedin.com/in/ravhihz"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
-        >
-          <LinkedinIcon size={18} />
-          LinkedIn
-        </a>
+      <div className="flex flex-wrap gap-3 mb-8">
+        <SpotlightButton href="mailto:ravhi.satria@gmail.com">
+          <Send size={18} />
+          Say Hello
+        </SpotlightButton>
+        <SpotlightButton href="/resume.pdf" download>
+          <Download size={18} />
+          Download CV
+        </SpotlightButton>
       </div>
+
+
     </section>
   );
 }
