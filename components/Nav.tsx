@@ -3,31 +3,41 @@
 import { useEffect, useState } from "react";
 
 const tabs = [
-  { id: "hero",     label: "~" },
-  { id: "about",    label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "contact",  label: "Contact" },
+  { id: "hero",           label: "~" },
+  { id: "featured",       label: "Featured" },
+  { id: "projects",       label: "Projects" },
+  { id: "tech-stack",     label: "Stack" },
+  { id: "about",          label: "About" },
+  { id: "experience",     label: "Experience" },
+  { id: "certifications", label: "Certs" },
+  { id: "contact",        label: "Contact" },
 ];
 
 export default function Nav() {
   const [active, setActive] = useState("hero");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-40% 0px -50% 0px" }
-    );
+    function onScroll() {
+      const THRESHOLD = 120; // px dari atas viewport — garis pemicu section aktif
+      let current = tabs[0].id;
 
-    tabs.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+      for (const tab of tabs) {
+        const el = document.getElementById(tab.id);
+        if (el && el.getBoundingClientRect().top <= THRESHOLD) current = tab.id;
+      }
 
-    return () => observer.disconnect();
+      // udah mentok di paling bawah halaman — paksa tab terakhir aktif.
+      // perlu ini karena section terakhir (Contact) kadang gak cukup tinggi
+      // buat ngedorong bagian atasnya lewatin THRESHOLD walau udah scroll max
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom) current = tabs[tabs.length - 1].id;
+
+      setActive(current);
+    }
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (

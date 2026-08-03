@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { GithubRepo } from "@/types/github";
-import FlagshipCard from "./FlagshipCard";
 import ProjectModal from "./ProjectModal";
 
 const LANGUAGE_COLORS: Record<string, string> = {
@@ -28,11 +27,9 @@ export default function Projects({ repos }: { repos: GithubRepo[] }) {
       <div className="flex items-center gap-4 mb-10">
         <span className="font-mono text-sm text-[var(--accent)]">02</span>
         <span className="text-[var(--border)]">/</span>
-        <h2 className="font-mono text-2xl sm:text-3xl font-bold text-[var(--text)]">Projects</h2>
+        <h2 className="font-mono text-2xl sm:text-3xl font-bold text-[var(--text)]">Other Projects</h2>
         <div className="flex-1 h-px bg-[var(--border)]" />
       </div>
-
-      <FlagshipCard />
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {rest.map((repo) => (

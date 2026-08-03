@@ -159,7 +159,12 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex flex-wrap items-center gap-4">
+        <a href="#featured"
+          className="flex items-center gap-2 bg-[var(--accent)] text-[var(--bg)] font-medium rounded-lg px-4 py-2 hover:bg-[var(--accent-dim)] transition-colors"
+        >
+          View Projects
+        </a>
         <a href="https://github.com/ravhihz"
           target="_blank"
           rel="noopener noreferrer"
@@ -176,7 +181,7 @@ export default function Hero() {
           <LinkedinIcon size={18} />
           LinkedIn
         </a>
-        <a href="mailto:ravhi.satria@gmail.com"
+        <a href="mailto:ravhi.wibowo97@gmail.com"
           className="flex items-center gap-2 border border-[var(--border)] rounded-lg px-4 py-2 hover:border-[var(--accent)] transition-colors"
         >
           <Mail size={18} />

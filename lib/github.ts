@@ -30,6 +30,8 @@ export async function getProjectRepos(): Promise<GithubRepo[]> {
 
   return repos
     .filter((r) => !r.topics.includes("flagship")) // flagship sudah tampil sendiri
+    .filter((r) => r.name.toLowerCase() !== "laporkui") // flagship, dobel proteksi selain topic
+    .filter((r) => r.stargazers_count > 1) // minimal 2 bintang — sinyal ada orang lain yang pake
     .map((r) => ({ ...r, _score: scoreRepo(r) }))
     .sort((a, b) => b._score - a._score)
     .slice(0, 6);
