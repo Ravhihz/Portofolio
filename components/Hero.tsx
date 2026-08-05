@@ -173,7 +173,7 @@ export default function Hero() {
           <GithubIcon size={18} />
           GitHub
         </a>
-        <a href="https://linkedin.com/in/ravhihz"
+        <a href="https://www.linkedin.com/in/ravhihariswibowo"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 border border-[var(--border)] rounded-lg px-4 py-2 hover:border-[var(--accent)] transition-colors"
