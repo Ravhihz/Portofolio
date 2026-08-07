@@ -1,33 +1,3 @@
-import { Send, Download } from "lucide-react";
+import { ArrowUpRight, Download, Send } from "lucide-react";
 import SpotlightButton from "./SpotlightButton";
-
-export default function Contact() {
-  return (
-    <section id="contact" className="max-w-4xl mx-auto px-6 py-16 border-t border-[var(--border)]">
-      <div className="flex items-center gap-4 mb-10">
-        <span className="font-mono text-sm text-[var(--accent)]">07</span>
-        <span className="text-[var(--border)]">/</span>
-        <h2 className="font-mono text-2xl sm:text-3xl font-bold text-[var(--text)]">Contact</h2>
-        <div className="flex-1 h-px bg-[var(--border)]" />
-      </div>
-
-      <p className="text-[var(--text-muted)] mb-2">
-        Terbuka untuk peluang kerja sebagai frontend / fullstack developer.
-      </p>
-      <p className="text-[var(--text)] font-medium mb-8">
-        Punya project yang cocok? Hubungi saya via email atau GitHub.
-      </p>
-
-      <div className="flex flex-wrap gap-3 mb-8">
-        <SpotlightButton href="mailto:ravhi.wibowo97@gmail.com">
-          <Send size={18} />
-          Say Hello
-        </SpotlightButton>
-        <SpotlightButton href="/resume.pdf" download>
-          <Download size={18} />
-          Download CV
-        </SpotlightButton>
-      </div>
-    </section>
-  );
-}
+export default function Contact() { return <section id="contact" className="section-shell border-t border-border py-24"><div className="rounded-2xl border border-primary/50 bg-primary p-7 text-primary-foreground sm:p-12"><div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-end"><div><p className="mb-4 font-mono text-xs uppercase tracking-[.16em]">07 / Start a conversation</p><h2 className="display-type max-w-3xl text-5xl font-bold leading-[.9] sm:text-7xl">Have a problem<br />worth solving?</h2></div><ArrowUpRight className="hidden size-16 lg:block" /></div><p className="mt-8 max-w-lg text-sm leading-relaxed opacity-80">Terbuka untuk peluang kerja sebagai frontend / fullstack developer. Kalau ada produk yang perlu dibangun dengan serius, let&apos;s talk.</p><div className="mt-8 flex flex-wrap gap-3"><SpotlightButton href="mailto:ravhi.wibowo97@gmail.com"><Send /> Say Hello</SpotlightButton><SpotlightButton href="/resume.pdf" download><Download /> Download CV</SpotlightButton></div></div><p className="mt-8 font-mono text-xs text-muted-foreground">Ravhi Haris Wibowo · 2026</p></section>; }
