@@ -37,7 +37,7 @@ export default function ProjectModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
+      className="fixed inset-0 z-50 flex items-end justify-center sm:items-center"
       onClick={onClose}
     >
       {/* backdrop */}

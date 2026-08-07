@@ -1,57 +1,6 @@
 // components/FlagshipCard.tsx
-"use client";
-
+import { ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "./icons";
-
-const LANGUAGE_COLORS: Record<string, string> = {
-  PHP: "#4F5D95",
-};
-
-const PINNED_PROJECT = {
-  name: "LaporKUI",
-  description:
-    "Platform pengaduan berbasis web untuk mahasiswa & masyarakat umum — submission lampiran, tracking status real-time, sistem balasan admin, QR code per laporan, dan RBAC terpisah untuk role user/admin. Notifikasi real-time via Pusher, email via SendGrid. Dibangun saat internship di Universitas Budi Luhur.",
-  html_url: "https://github.com/ravhihz/LaporKUI",
-  language: "PHP",
-};
-
-// pakai GitHub's OpenGraph image — bukan screenshot live demo karena project ini
-// pakai FastText yang butuh environment khusus, gak bisa di-deploy ke hosting biasa
-const previewUrl = `https://opengraph.githubassets.com/1/ravhihz/LaporKUI`;
-
-export default function FlagshipCard() {
-  return (
-    
-      <a href={PINNED_PROJECT.html_url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block border border-[var(--accent)] bg-[var(--surface)] rounded-lg overflow-hidden shadow-lg shadow-black/25 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-black/40 transition-all"
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={previewUrl}
-        alt={`Preview ${PINNED_PROJECT.name}`}
-        className="w-full h-48 object-cover object-top border-b border-[var(--border)]"
-        loading="lazy"
-      />
-
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-2">
-          <span className="font-mono text-xs text-[var(--accent)] uppercase tracking-wide">
-            Flagship — Internship Project
-          </span>
-          <span className="flex items-center gap-1.5 text-xs text-[var(--text-muted)]">
-            <GithubIcon size={14} className="group-hover:text-[var(--accent)] transition-colors" />
-            Code
-          </span>
-        </div>
-        <h3 className="font-mono font-semibold text-lg mb-2">{PINNED_PROJECT.name}</h3>
-        <p className="text-sm text-[var(--text-muted)] mb-3">{PINNED_PROJECT.description}</p>
-        <div className="flex items-center gap-1.5 text-sm text-[var(--text-muted)]">
-          <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: LANGUAGE_COLORS[PINNED_PROJECT.language] }} />
-          {PINNED_PROJECT.language}
-        </div>
-      </div>
-    </a>
-  );
-}
+const PINNED_PROJECT = { name: "LaporKUI", description: "Platform pengaduan berbasis web untuk mahasiswa & masyarakat umum — submission lampiran, tracking status real-time, sistem balasan admin, QR code per laporan, dan RBAC terpisah untuk role user/admin.", html_url: "https://github.com/ravhihz/LaporKUI", language: "PHP" };
+const previewUrl = "https://opengraph.githubassets.com/1/ravhihz/LaporKUI";
+export default function FlagshipCard() { return <a href={PINNED_PROJECT.html_url} target="_blank" rel="noopener noreferrer" className="group grid overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:border-primary lg:grid-cols-[1.15fr_.85fr]"><div className="relative min-h-72 overflow-hidden bg-surface-elevated">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={previewUrl} alt={`Preview ${PINNED_PROJECT.name}`} className="h-full w-full object-cover object-top opacity-70 transition duration-500 group-hover:scale-105 group-hover:opacity-100" loading="lazy" /><div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" /><span className="absolute bottom-5 left-5 rounded-full border border-primary/40 bg-background/80 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-primary">Flagship case study</span></div><div className="flex flex-col justify-between p-7 sm:p-10"><div><div className="mb-12 flex items-center justify-between"><span className="font-mono text-xs text-muted-foreground">2025 / INTERNSHIP</span><ArrowUpRight className="text-primary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></div><h3 className="display-type text-4xl font-bold text-foreground sm:text-5xl">{PINNED_PROJECT.name}</h3><p className="mt-5 text-sm leading-relaxed text-muted-foreground">{PINNED_PROJECT.description}</p></div><div className="mt-10 flex items-center justify-between border-t border-border pt-5"><span className="font-mono text-xs text-muted-foreground">Laravel · React · MySQL · Pusher</span><GithubIcon className="text-muted-foreground group-hover:text-primary" /></div></div></a>; }
