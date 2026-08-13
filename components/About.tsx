@@ -1,1 +1,13 @@
-export default function About() { return <section id="about" className="section-shell border-t border-border py-24"><p className="section-kicker mb-4">04 / The person behind the code</p><div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]"><h2 className="section-title font-bold">Code with context.<br /><span className="text-muted-foreground">Products with empathy.</span></h2><div className="flex max-w-xl flex-col gap-5 text-base leading-relaxed text-muted-foreground"><p>Saya suka project yang mengharuskan saya mengambil keputusan trade-off, bukan cuma menyusun UI. Saat membangun sistem rate limiting di <strong className="font-semibold text-foreground">Captionin</strong>, saya menemukan perbedaan timezone yang memengaruhi jam operasional UMKM lokal — lalu memperbaikinya di layer yang tepat.</p><p>Latar belakang sebelum coding — sempat menjalankan <strong className="font-semibold text-foreground">coffee shop</strong> dan bekerja di <strong className="font-semibold text-foreground">OOH branding</strong> — membuat saya terbiasa memikirkan siapa yang benar-benar memakai produk.</p></div></div></section>; }
+export default function About() { return <section id="about" className="section-shell border-t border-border py-24">
+    <p className="section-kicker mb-4">04 / The person behind the code</p>
+    <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
+        <h2 className="section-title font-bold">Code with context.
+            <br /><span className="text-muted-foreground">Products with empathy.</span></h2>
+            <div className="flex max-w-xl flex-col gap-5 text-base leading-relaxed text-muted-foreground">
+                <p>Saya suka project yang mengharuskan saya mengambil keputusan trade-off, 
+                    bukan cuma menyusun UI. Saat membangun sistem rate limiting di 
+                    <strong className="font-semibold text-foreground">Captionin</strong>, 
+                    saya menemukan perbedaan timezone yang memengaruhi jam operasional UMKM lokal — lalu memperbaikinya di layer yang tepat.</p>
+                    <p>Latar belakang sebelum coding — sempat menjalankan <strong className="font-semibold text-foreground">coffee shop</strong> 
+                    dan bekerja di <strong className="font-semibold text-foreground">OOH branding</strong> 
+                    — membuat saya terbiasa memikirkan siapa yang benar-benar memakai produk.</p></div></div></section>; }
