@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "Ravhi Haris Wibowo — Fullstack Developer",
   description: "Portfolio Ravhi Haris Wibowo, frontend-heavy fullstack developer yang membangun produk web yang siap dipakai.",
+  verification: {
+    google: "q19zb7eRZxM4vJkpAAbkL9aA80-UIEkxTwuWoRXBJhQ",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
