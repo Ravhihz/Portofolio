@@ -20,6 +20,7 @@ export default function Projects({ repos }: { repos: GithubRepo[] }) {
 
   const rest = repos
     .filter((r) => !r.topics.includes("flagship") && !r.name.includes(".github.io"))
+    .filter((r) => r.name.toLowerCase() !== "varion")
     .slice(0, 6);
 
   return (
@@ -36,7 +37,7 @@ export default function Projects({ repos }: { repos: GithubRepo[] }) {
           </h2>
         </div>
         <span className="font-mono text-xs text-muted-foreground">
-          {String(rest.length).padStart(2, "0")} {tr.repositories}
+          {String(rest.length).padStart(2, "0")} {tr.projects_count}
         </span>
       </div>
 
@@ -49,7 +50,9 @@ export default function Projects({ repos }: { repos: GithubRepo[] }) {
           >
             <div>
               <div className="mb-8 flex items-center justify-between">
-                <span className="font-mono text-xs text-muted-foreground">0{index + 1}</span>
+                <span className="font-mono text-xs text-muted-foreground">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 <ArrowUpRight className="size-4 text-muted-foreground transition-colors group-hover:text-primary" />
               </div>
               <h3 className="font-mono text-sm font-bold text-foreground group-hover:text-primary">{repo.name}</h3>
