@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { JetBrains_Mono, Inter } from "next/font/google";
 import Nav from "@/components/Nav";
 import { LangProvider } from "@/context/LangContext";
@@ -30,6 +31,7 @@ export default function RootLayout({
           <Nav />
           {children}
         </LangProvider>
+        <Analytics />
       </body>
     </html>
   );
